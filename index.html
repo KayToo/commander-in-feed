@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commander in Feed — Feed</title>
+<link rel="icon" href="site-icon.jpg">
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="mode-merged" data-mode="merged">
+<a class="skip" href="#feed">Skip to posts</a>
+<header class="mast">
+  <div class="mast-inner">
+    <a class="brand" href="index.html">
+      <img src="site-icon.jpg" alt="" width="95" height="58">
+      <span>
+        <span class="brand-name">Commander in Feed</span>
+        <span class="brand-tag">Official accounts, one timeline</span>
+      </span>
+    </a>
+  </div>
+</header>
+<h1 class="sr">Commander in Feed</h1>
+<div class="page-top">
+  <div class="band-inner">
+    <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</div>
+<div class="toolbar">
+  <div class="band-inner">
+    <div class="row">
+      <div class="views" role="group" aria-label="View">
+        <button type="button" data-mode="merged" aria-current="page">Feed</button>
+        <button type="button" data-mode="condensed">Condensed Feed</button>
+        <button type="button" data-mode="spine">Timeline</button>
+      </div>
+      <label class="searchbox">
+        <span class="sr">Search</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+        <input id="q" type="search" placeholder="Search posts" autocomplete="off">
+      </label>
+    </div>
+    <div class="row chips" role="group" aria-label="Accounts">
+      <span class="chips-label">Show</span>
+      <button type="button" class="chip" data-account="realDonaldTrump" style="--c:var(--truth)" aria-pressed="true"><span class="swatch truth"></span>Trump · Truth Social</button>
+      <button type="button" class="chip" data-account="WhiteHouse" style="--c:var(--x-whitehouse)" aria-pressed="true"><span class="swatch wh"></span>White House · X</button>
+      <button type="button" class="chip" data-account="RapidResponse47" style="--c:var(--x-rapid)" aria-pressed="true"><span class="swatch rr"></span>Rapid Response 47 · X</button>
+    </div>
+  </div>
+</div>
+<main class="stage">
+  <p class="tally" id="tally"></p>
+  <div id="feed"></div>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <p>Counts are the ones each platform reported on the post. A like on X and a like on Truth Social are not the same measure.</p>
+  </div>
+</footer>
+<script src="feed-app.js"></script>
+</body>
+</html>
