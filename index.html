@@ -28,36 +28,54 @@
 </div>
 <div class="toolbar">
   <div class="band-inner">
-    <div class="row">
+    <div class="row tools">
       <div class="views" role="group" aria-label="View">
-        <button type="button" data-mode="merged">Feed</button>
-        <button type="button" data-mode="condensed" aria-current="page">Condensed Feed</button>
-        <button type="button" data-mode="spine">Timeline</button>
+        <button type="button" data-mode="merged" aria-pressed="false">Feed</button>
+        <button type="button" data-mode="condensed" aria-pressed="true">Condensed Feed</button>
+        <button type="button" data-mode="spine" aria-pressed="false">Timeline</button>
       </div>
-      <label class="searchbox">
-        <span class="sr">Search</span>
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
-        <input id="q" type="search" placeholder="Search posts" autocomplete="off">
-      </label>
-    </div>
-    <div class="row" id="density-row">
-      <div class="views" role="group" aria-label="Condensed layout">
-        <button type="button" data-density="line">One line</button>
-        <button type="button" data-density="pair" aria-current="page">Two lines</button>
-        <button type="button" data-density="group">By account</button>
+      <div class="views quiet" id="density-row" role="group" aria-label="Condensed layout">
+        <button type="button" data-density="line" aria-pressed="false">One line</button>
+        <button type="button" data-density="pair" aria-pressed="true">Two lines</button>
+        <button type="button" data-density="group" aria-pressed="false">By account</button>
+      </div>
+      <div class="tools-end">
+        <div class="searchbox">
+          <label class="sr" for="q">Search posts</label>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+          <input id="q" type="search" placeholder="Search posts" autocomplete="off" enterkeyhint="search">
+          <button type="button" class="search-clear" id="q-clear" hidden aria-label="Clear search"><span aria-hidden="true">×</span></button>
+        </div>
+        <p class="tally" id="tally" role="status"></p>
       </div>
     </div>
-    <div class="row filters" role="group" aria-label="Accounts">
-      <span class="filters-label">Show</span>
-      <label class="filter" style="--c:var(--truth)"><input type="checkbox" data-account="realDonaldTrump" checked> <span class="swatch truth" aria-hidden="true"></span> Trump</label>
-      <label class="filter" style="--c:var(--x-whitehouse)"><input type="checkbox" data-account="WhiteHouse" checked> <span class="swatch wh" aria-hidden="true"></span> White House</label>
-      <label class="filter" style="--c:var(--x-rapid)"><input type="checkbox" data-account="RapidResponse47" checked> <span class="swatch rr" aria-hidden="true"></span> Rapid Response 47</label>
+    <div class="row filters">
+      <fieldset class="filter-set track-set">
+        <legend class="sr">Accounts</legend>
+        <label class="toggle" style="--c:var(--plat-truth)"><input type="checkbox" data-account="realDonaldTrump" checked><span>Truth Social</span></label>
+        <label class="toggle" style="--c:var(--plat-x)"><input type="checkbox" data-account="WhiteHouse" checked><span>X: White House</span></label>
+        <label class="toggle" style="--c:var(--plat-x)"><input type="checkbox" data-account="RapidResponse47" checked><span>X: Rapid Response 47</span></label>
+      </fieldset>
+      <fieldset class="filter-set" aria-describedby="range-readout">
+        <legend class="sr">Dates</legend>
+        <div class="seg">
+          <label><input type="radio" name="dates" value="7"><span>7 days</span></label>
+          <label><input type="radio" name="dates" value="14" checked><span>14 days</span></label>
+          <label><input type="radio" name="dates" value="custom"><span>Custom</span></label>
+        </div>
+        <span class="range-box" id="range-readout"></span>
+        <div class="custom-dates" id="custom-dates" hidden>
+          <label class="date-field">From <input id="from" type="date" autocomplete="off"></label>
+          <label class="date-field">To <input id="to" type="date" autocomplete="off"></label>
+        </div>
+        <p class="range-error" id="range-error" hidden>The start date is after the end date.</p>
+      </fieldset>
     </div>
   </div>
 </div>
 <main class="stage">
-  <p class="tally" id="tally"></p>
   <div id="feed"></div>
+  <div id="more" class="more" hidden aria-hidden="true"></div>
 </main>
 <footer class="foot">
   <div class="foot-inner">
