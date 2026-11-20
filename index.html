@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Commander in Feed — Feed</title>
+<title>Commander in Feed — Condensed Feed</title>
 <link rel="icon" href="site-icon.jpg">
 <link rel="stylesheet" href="site.css">
 </head>
-<body class="mode-merged" data-mode="merged">
+<body class="mode-condensed" data-mode="condensed">
 <a class="skip" href="#feed">Skip to posts</a>
 <header class="mast">
   <div class="mast-inner">
     <a class="brand" href="index.html">
-      <img src="site-icon.jpg" alt="" width="95" height="58">
+      <img src="site-icon.jpg" alt="" width="114" height="70">
       <span>
         <span class="brand-name">Commander in Feed</span>
         <span class="brand-tag">Official accounts, one timeline</span>
@@ -30,8 +30,8 @@
   <div class="band-inner">
     <div class="row">
       <div class="views" role="group" aria-label="View">
-        <button type="button" data-mode="merged" aria-current="page">Feed</button>
-        <button type="button" data-mode="condensed">Condensed Feed</button>
+        <button type="button" data-mode="merged">Feed</button>
+        <button type="button" data-mode="condensed" aria-current="page">Condensed Feed</button>
         <button type="button" data-mode="spine">Timeline</button>
       </div>
       <label class="searchbox">
@@ -40,11 +40,18 @@
         <input id="q" type="search" placeholder="Search posts" autocomplete="off">
       </label>
     </div>
-    <div class="row chips" role="group" aria-label="Accounts">
-      <span class="chips-label">Show</span>
-      <button type="button" class="chip" data-account="realDonaldTrump" style="--c:var(--truth)" aria-pressed="true"><span class="swatch truth"></span>Trump · Truth Social</button>
-      <button type="button" class="chip" data-account="WhiteHouse" style="--c:var(--x-whitehouse)" aria-pressed="true"><span class="swatch wh"></span>White House · X</button>
-      <button type="button" class="chip" data-account="RapidResponse47" style="--c:var(--x-rapid)" aria-pressed="true"><span class="swatch rr"></span>Rapid Response 47 · X</button>
+    <div class="row" id="density-row">
+      <div class="views" role="group" aria-label="Condensed layout">
+        <button type="button" data-density="line">One line</button>
+        <button type="button" data-density="pair" aria-current="page">Two lines</button>
+        <button type="button" data-density="group">By account</button>
+      </div>
+    </div>
+    <div class="row filters" role="group" aria-label="Accounts">
+      <span class="filters-label">Show</span>
+      <label class="filter" style="--c:var(--truth)"><input type="checkbox" data-account="realDonaldTrump" checked> <span class="swatch truth" aria-hidden="true"></span> Trump</label>
+      <label class="filter" style="--c:var(--x-whitehouse)"><input type="checkbox" data-account="WhiteHouse" checked> <span class="swatch wh" aria-hidden="true"></span> White House</label>
+      <label class="filter" style="--c:var(--x-rapid)"><input type="checkbox" data-account="RapidResponse47" checked> <span class="swatch rr" aria-hidden="true"></span> Rapid Response 47</label>
     </div>
   </div>
 </div>
