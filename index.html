@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Commander in Feed — Condensed Feed</title>
+<title>Commander in Feed — Feed</title>
 <link rel="icon" href="site-icon.jpg">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="filters.css">
 </head>
-<body class="mode-condensed" data-mode="condensed">
+<body class="site-nav filter-cards layout-panel panel-menus mode-condensed" data-mode="condensed">
 <a class="skip" href="#feed">Skip to posts</a>
 <header class="mast">
   <div class="mast-inner">
@@ -23,21 +25,23 @@
 <h1 class="sr">Commander in Feed</h1>
 <div class="page-top">
   <div class="band-inner">
-    <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p class="sub">A nonpartisan record of official U.S. government messaging on Truth Social and X (Twitter). Follow what those accounts are emphasizing, keep up with President Trump's Truth Social posts, and check whether a post going around is real.</p>
+    <p class="updated" id="updated"></p>
   </div>
 </div>
 <div class="toolbar">
   <div class="band-inner">
     <div class="row tools">
-      <div class="views" role="group" aria-label="View">
-        <button type="button" data-mode="merged" aria-pressed="false">Feed</button>
-        <button type="button" data-mode="condensed" aria-pressed="true">Condensed Feed</button>
-        <button type="button" data-mode="spine" aria-pressed="false">Timeline</button>
-      </div>
-      <div class="views quiet" id="density-row" role="group" aria-label="Condensed layout">
-        <button type="button" data-density="line" aria-pressed="false">One line</button>
-        <button type="button" data-density="pair" aria-pressed="true">Two lines</button>
-        <button type="button" data-density="group" aria-pressed="false">By account</button>
+      <div class="nav-cluster">
+        <div class="views primary" role="group" aria-label="View">
+          <button type="button" id="nav-feed" aria-pressed="true">Feed</button>
+          <button type="button" data-mode="spine" aria-pressed="false">Timeline</button>
+        </div>
+        <div class="views sub" id="density-row" role="group" aria-label="Feed layout">
+          <button type="button" data-density="line" aria-pressed="false">One line</button>
+          <button type="button" data-density="pair" aria-pressed="true">Two lines</button>
+          <button type="button" data-mode="merged" aria-pressed="false">Full</button>
+        </div>
       </div>
       <div class="tools-end">
         <div class="searchbox">
@@ -50,12 +54,34 @@
       </div>
     </div>
     <div class="row filters">
-      <fieldset class="filter-set track-set">
-        <legend class="sr">Accounts</legend>
-        <label class="toggle" style="--c:var(--plat-truth)"><input type="checkbox" data-account="realDonaldTrump" checked><span>Truth Social</span></label>
-        <label class="toggle" style="--c:var(--plat-x)"><input type="checkbox" data-account="WhiteHouse" checked><span>X: White House</span></label>
-        <label class="toggle" style="--c:var(--plat-x)"><input type="checkbox" data-account="RapidResponse47" checked><span>X: Rapid Response 47</span></label>
-      </fieldset>
+      <div class="dd" id="dd-account">
+        <button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-account-panel"><span class="dd-label">Account</span><span class="dd-val" hidden></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+        <div class="dd-panel" id="dd-account-panel" role="group" aria-label="Accounts" hidden>
+          <label class="dd-opt"><input type="checkbox" data-account="realDonaldTrump" checked><span>Donald J. Trump</span></label>
+          <label class="dd-opt"><input type="checkbox" data-account="WhiteHouse" checked><span>The White House</span></label>
+          <label class="dd-opt"><input type="checkbox" data-account="RapidResponse47" checked><span>Rapid Response 47</span></label>
+        </div>
+      </div>
+      <div class="dd" id="dd-topic">
+        <button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-topic-panel"><span class="dd-label">Topic</span><span class="dd-val" hidden></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+        <div class="dd-panel" id="dd-topic-panel" role="group" aria-label="Topics" hidden>
+          <div class="dd-list" id="topic-list"></div>
+          <button type="button" class="dd-clear" id="topic-clear">Clear topics</button>
+        </div>
+      </div>
+      <div class="dd" id="dd-engage">
+        <button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-engage-panel"><span class="dd-label">Engagement</span><span class="dd-val" hidden></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></button>
+        <div class="dd-panel" id="dd-engage-panel" role="radiogroup" aria-label="Engagement" aria-describedby="engage-note" hidden>
+          <label class="dd-opt"><input type="radio" name="engage" value="0" checked><span>All posts</span></label>
+          <label class="dd-opt"><input type="radio" name="engage" value="0.75"><span>Top 25%</span></label>
+          <label class="dd-opt"><input type="radio" name="engage" value="0.9"><span>Top 10%</span></label>
+          <p class="dd-note" id="engage-note">Likes plus comments, ranked within each platform.</p>
+        </div>
+      </div>
+      <div class="ratio-set">
+        <label class="ratio-label" for="ratio">Minimum ratio <span class="ratio-unit">comments per 10 likes</span></label>
+        <input type="number" id="ratio" min="0" step="0.5" inputmode="decimal" placeholder="Any">
+      </div>
       <fieldset class="filter-set" aria-describedby="range-readout">
         <legend class="sr">Dates</legend>
         <div class="seg">
@@ -83,5 +109,7 @@
   </div>
 </footer>
 <script src="feed-app.js"></script>
+<script src="nav.js"></script>
+<script src="filters.js"></script>
 </body>
 </html>

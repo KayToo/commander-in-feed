@@ -1,0 +1,277 @@
+/* Two primary views, with Feed's layout options beside them. */
+
+.updated {
+  margin: 6px 0 0;
+  color: #536471;
+  font-size: 0.8125rem;
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+}
+.updated:empty { display: none; }
+
+body.site-nav .tools {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+body.site-nav .nav-cluster {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.site-nav .views.primary {
+  padding: 4px;
+  border-radius: 12px;
+  background: #e3e7ee;
+}
+body.site-nav .views.primary button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 9px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #4b5563;
+  background: transparent;
+}
+body.site-nav .views.primary button[aria-pressed="true"] {
+  background: #fff;
+  color: #1a1d23;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 0 0 1px rgba(16, 24, 40, 0.08);
+}
+
+body.site-nav #density-row { display: none; }
+body.site-nav.mode-condensed #density-row,
+body.site-nav.mode-merged #density-row { display: inline-flex; }
+
+body.site-nav .views.sub {
+  padding: 3px;
+  border-radius: 10px;
+  background: #e3e7ee;
+}
+body.site-nav .views.sub button {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #4b5563;
+  background: transparent;
+}
+body.site-nav .views.sub button[aria-pressed="true"] {
+  background: #fff;
+  color: #1a1d23;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 0 0 1px rgba(16, 24, 40, 0.08);
+}
+
+body.site-nav .post,
+body.site-nav .rowline,
+body.site-nav .rowpair,
+body.site-nav .run,
+body.site-nav .spine-card {
+  border-radius: 14px;
+  border-color: #e6e9ef;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+body.site-nav .post .acct-icon,
+body.site-nav .icon-cell .acct-icon {
+  border-radius: 50%;
+}
+body.site-nav .spine-card .pair-title {
+  font-weight: 400;
+}
+
+body.site-nav:not(.has-search):not(.has-filter) #tally { display: none; }
+
+body.site-nav { --plat-truth: #7a2b1e; }
+
+body.site-nav .filters { gap: 8px; }
+body.site-nav .filters .seg label { padding: 0 10px; }
+
+body.site-nav .dd { position: relative; flex: none; }
+body.site-nav .dd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 40px;
+  padding: 0 8px 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: #e3e7ee;
+  color: #4b5563;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 550;
+  line-height: 1;
+  cursor: pointer;
+}
+body.site-nav .dd-btn:hover { color: #1a1d23; }
+body.site-nav .dd-btn.is-set {
+  background: #fff;
+  color: #1a1d23;
+  box-shadow: inset 0 0 0 1.5px #1a1d23;
+}
+body.site-nav .dd-val[hidden] { display: none; }
+body.site-nav .dd-btn:focus-visible { outline: 2px solid #1a1d23; outline-offset: 1px; }
+body.site-nav .dd-val {
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #1a1d23;
+  font-weight: 600;
+}
+body.site-nav .dd-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s;
+}
+body.site-nav .dd-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+body.site-nav .dd-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 6;
+  min-width: 15rem;
+  max-height: min(60vh, 26rem);
+  overflow-y: auto;
+  padding: 6px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.14), 0 0 0 1px rgba(16, 24, 40, 0.08);
+}
+body.site-nav .dd-panel[hidden] { display: none; }
+body.site-nav .dd-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: #1a1d23;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+body.site-nav .dd-opt:hover { background: #f2f4f7; }
+body.site-nav .dd-opt input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  flex: none;
+  accent-color: #1a1d23;
+}
+body.site-nav .dd-opt span:first-of-type { flex: 1 1 auto; }
+body.site-nav .dd-count {
+  color: #536471;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+body.site-nav .dd-clear {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  min-height: 36px;
+  border: 0;
+  border-top: 1px solid #e6e9ef;
+  background: transparent;
+  color: #1a1d23;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 0 10px;
+  cursor: pointer;
+}
+body.site-nav .dd-clear[hidden] { display: none; }
+body.site-nav .dd-note {
+  margin: 4px 0 0;
+  padding: 8px 10px 4px;
+  border-top: 1px solid #e6e9ef;
+  color: #536471;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+body.site-nav .post,
+body.site-nav .rowline,
+body.site-nav .rowpair,
+body.site-nav .run {
+  border-left-width: 8px;
+  border-left-color: var(--bar);
+}
+body.site-nav .spine-item.right .spine-card {
+  border-left-width: 8px;
+  border-left-color: var(--bar);
+}
+body.site-nav .spine-item.left .spine-card {
+  border-left-color: #e6e9ef;
+  border-right-width: 8px;
+  border-right-color: var(--bar);
+}
+
+/* Full posts use the same body type as an expanded card in the other views. */
+body.site-nav .post .text,
+body.site-nav .post .no-text,
+body.site-nav .opened .text,
+body.site-nav .opened .no-text {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+body.site-nav .topic-line {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+body.site-nav .post > .topic-line { margin-left: calc(44px + 12px); }
+body.site-nav .pair-counts.engage-line { display: inline; }
+body.site-nav .engage {
+  display: inline;
+  color: #536471;
+  font: inherit;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+body.site-nav .metric {
+  display: inline;
+  white-space: nowrap;
+}
+body.site-nav .metric + .metric { margin-left: 1em; }
+/* Bottom sits 0.245em under the baseline so the icon's center lands on the digits' center. */
+body.site-nav .metric svg {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.25em;
+  vertical-align: -0.245em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body.site-nav .as-of,
+body.site-nav .repost-tag {
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+}
+
+@media (max-width: 760px) {
+  body.site-nav .nav-cluster { flex-wrap: wrap; }
+}
